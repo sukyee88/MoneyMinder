@@ -1,14 +1,18 @@
-/*
-* HTTP Cloud Function.
-*
-* @param {Object} req Cloud Function request context.
-* @param {Object} res Cloud Function response context.
-*/
-exports.helloHttp = function helloHttp (req, res) {
-  response = "This is a sample response from your webhook!" //Default response from the webhook to show it's working
+'use strict';
 
-  res.setHeader('Content-Type', 'application/json'); //Requires application/json MIME type
-  res.send(JSON.stringify({ "speech": response, "displayText": response 
-  //"speech" is the spoken version of the response, "displayText" is the visual version
-  }));
-};
+const Telegram = require('telegram-node-bot'),
+    
+    tg = new Telegram.Telegram('481181555:AAH8B9GnMdfv0e8ZQqVgIhh9B5XJ86s_-9Y', {
+        workers: 1,
+        
+    });
+
+
+const AddCtrl = require('./controllers/add')
+    , OtherwiseController = require('./controllers/otherwise');
+
+const addcontrol = new AddCtrl();
+
+tg.router.when(new Telegram.TextCommand('/add', 'addCommand'), addcontrol)
+.when(new Telegram.TextCommand('/total', 'totalCommand'), addcontrol)
+.otherwise(new OtherwiseController());

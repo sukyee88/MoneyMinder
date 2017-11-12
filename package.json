@@ -1,0 +1,26 @@
+{
+  "name": "MoneyMinder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "api.ai": "^1.0.3",
+    "apiai": "^4.0.3",
+    "telegram-node-bot": "^4.0.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sukyee88/MoneyMinder.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sukyee88/MoneyMinder/issues"
+  },
+  "homepage": "https://github.com/sukyee88/MoneyMinder#readme"
+}
