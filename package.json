@@ -6,6 +6,7 @@
   "dependencies": {
     "api.ai": "^1.0.3",
     "apiai": "^4.0.3",
+    "express": "^4.16.2",
     "telegram-node-bot": "^4.0.5"
   },
   "devDependencies": {},
