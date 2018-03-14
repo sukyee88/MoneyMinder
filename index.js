@@ -4,6 +4,10 @@
 const apiai = require('apiai');
 const express = require('express');
 const bodyParser = require('body-parser');
+var fs = require('fs');
+var readline = require('readline');
+var google = require('googleapis');
+var googleAuth = require('google-auth-library');
 
 const Telegram = require('telegram-node-bot'),
     
@@ -12,12 +16,22 @@ const Telegram = require('telegram-node-bot'),
         
     });
 
+const gsheet = require('./controllers/gsheet')
+
 
 const AddCtrl = require('./controllers/add')
     , OtherwiseController = require('./controllers/otherwise');
 
 const addcontrol = new AddCtrl();
 
+
+// Defining Telegram commands
+
 tg.router.when(new Telegram.TextCommand('/add', 'addCommand'), addcontrol)
 .when(new Telegram.TextCommand('/total', 'totalCommand'), addcontrol)
 .otherwise(new OtherwiseController());
+
+
+
+
+

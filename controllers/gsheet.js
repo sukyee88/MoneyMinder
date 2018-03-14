@@ -1,8 +1,3 @@
-var fs = require('fs');
-var readline = require('readline');
-var google = require('googleapis');
-var googleAuth = require('google-auth-library');
-
 // If modifying these scopes, delete your previously saved credentials
 // at ~/.credentials/sheets.googleapis.com-nodejs-quickstart.json
 var SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
@@ -95,31 +90,31 @@ function storeToken(token) {
   console.log('Token stored to ' + TOKEN_PATH);
 }
 
-/**
- * Print the names and majors of students in a sample spreadsheet:
- * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
- */
-function listMajors(auth) {
+// Adding new row in Gsheet
+function addrow(auth){
   var sheets = google.sheets('v4');
-  sheets.spreadsheets.values.get({
-    auth: auth,
-    spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
-    range: 'Class Data!A2:E',
-  }, function(err, response) {
-    if (err) {
+  var values = [
+    [
+      spends[0], spends[1]
+    ],
+    // Additional rows ...
+  ];
+  var body = {
+    values: values
+  };
+  sheets.spreadsheets.values.update({
+    spreadsheetId: spreadsheetId,
+    range: range,
+    valueInputOption: valueInputOption,
+    resource: body
+  }, function(err, result) {
+    if(err) {
+      // Handle error
       console.log('The API returned an error: ' + err);
-      return;
-    }
-    var rows = response.values;
-    if (rows.length == 0) {
-      console.log('No data found.');
+      return
     } else {
-      console.log('Name, Major:');
-      for (var i = 0; i < rows.length; i++) {
-        var row = rows[i];
-        // Print columns A and E, which correspond to indices 0 and 4.
-        console.log('%s, %s', row[0], row[4]);
-      }
+      console.log('%d cells updated.', result.updatedCells);
     }
   });
+
 }
