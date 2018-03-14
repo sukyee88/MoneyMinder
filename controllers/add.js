@@ -20,7 +20,6 @@ class AddCtrl extends Telegram.TelegramBaseController{
                             
                 console.log(spends);
             
-                $.sendMessage("You spent " + newSpendAmount + " for " + newSpendCategory);
             
         });
     }
