@@ -18,7 +18,7 @@ const Telegram = require('telegram-node-bot'),
 
 const gsheet = require('./controllers/gsheet')
 
-console.log(spends);
+console.log($.message.text);
 const AddCtrl = require('./controllers/add')
     , OtherwiseController = require('./controllers/otherwise');
 
