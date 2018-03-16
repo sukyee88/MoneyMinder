@@ -6,10 +6,16 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const Telegram = require('telegram-node-bot'),
+
+	PersistentMemoryStorage = require('./adapters/PersistentMemoryStorage'),
+    storage = new PersistentMemoryStorage(
+        `${__dirname}/data/userStorage.json`,
+        `${__dirname}/data/chatStorage.json`
+    ),
     
     tg = new Telegram.Telegram('481181555:AAH8B9GnMdfv0e8ZQqVgIhh9B5XJ86s_-9Y', {
         workers: 1,
-        
+        storage: storage
     });
 
 // const gsheet = require('./controllers/gsheet')
@@ -26,7 +32,10 @@ tg.router.when(new Telegram.TextCommand('/add', 'addCommand'), addcontrol)
 .when(new Telegram.TextCommand('/total', 'totalCommand'), addcontrol)
 .otherwise(new OtherwiseController());
 
+function exitHandler(exitCode) {
+    storage.flush();
+    process.exit(exitCode);
+}
 
-
-
-
+process.on('SIGINT', exitHandler.bind(null, 0));
+process.on('uncaughtException', exitHandler.bind(null, 1));
