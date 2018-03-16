@@ -4,9 +4,10 @@ const Telegram = require('telegram-node-bot');
 
 class AddCtrl extends Telegram.TelegramBaseController{
     addHandler($){
+
         let newSpend = $.message.text.split(" ").slice(1)
-        let newSpendAmount = newSpend[0];
-        let newSpendCategory = newSpend[1];
+        // let newSpendAmount = newSpend[0];
+        // let newSpendCategory = newSpend[1];
 
         
         if (!newSpend) return $.sendMessage("Please add your spending by typing /add [amount] [category]");
@@ -16,10 +17,9 @@ class AddCtrl extends Telegram.TelegramBaseController{
                 if (!Array.isArray(spends)) $.setUserSession('spends', [newSpend]);
             
                 else $.setUserSession('spends', spends.concat([newSpend]));
-                $.sendMessage("You spent " + newSpendAmount + " for " + newSpendCategory);
+                $.sendMessage("You spent " + newSpend[0] + " for " + newSpend[1]);
                             
                 console.log(spends);
-            
             
         });
     }

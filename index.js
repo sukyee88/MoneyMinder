@@ -21,8 +21,6 @@ const AddCtrl = require('./controllers/add')
 const addcontrol = new AddCtrl();
 
 
-
-
 // Defining Telegram commands
 tg.router.when(new Telegram.TextCommand('/add', 'addCommand'), addcontrol)
 .when(new Telegram.TextCommand('/total', 'totalCommand'), addcontrol)
