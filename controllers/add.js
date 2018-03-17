@@ -14,7 +14,6 @@ class AddCtrl extends Telegram.TelegramBaseController{
                 if (!Array.isArray(spends)) $.setUserSession('spends', [newSpend]);
             
                 else $.setUserSession('spends', spends.concat([newSpend]));
-                console.log(spends);
                 $.sendMessage("You spent " + newSpend[0] + " for " + newSpend[1]);
 
         });
