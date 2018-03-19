@@ -4,19 +4,21 @@
 const apiai = require('apiai');
 const express = require('express');
 const bodyParser = require('body-parser');
-
+const dotenv = require('dotenv').config();
 const Telegram = require('telegram-node-bot'),
 
-	PersistentMemoryStorage = require('./adapters/PersistentMemoryStorage'),
-    storage = new PersistentMemoryStorage(
-        `${__dirname}/data/userStorage.json`,
-        `${__dirname}/data/chatStorage.json`
-    ),
-    
-    tg = new Telegram.Telegram('481181555:AAH8B9GnMdfv0e8ZQqVgIhh9B5XJ86s_-9Y', {
-        workers: 1,
-        storage: storage
-    });
+
+
+PersistentMemoryStorage = require('./adapters/PersistentMemoryStorage'),
+storage = new PersistentMemoryStorage(
+    `${__dirname}/data/userStorage.json`,
+    `${__dirname}/data/chatStorage.json`
+),
+
+tg = new Telegram.Telegram(process.env.TGAPIKEY, {
+    workers: 1,
+    storage: storage
+});
 
 // const gsheet = require('./controllers/gsheet')
 
