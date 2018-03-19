@@ -4,7 +4,7 @@
 const apiai = require('apiai');
 const express = require('express');
 const bodyParser = require('body-parser');
-require('dotenv').config();
+const dotenv = require('dotenv').load();
 const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN; // this is not working properly
 const Telegram = require('telegram-node-bot'),
 
