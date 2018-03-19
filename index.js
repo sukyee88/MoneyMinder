@@ -5,7 +5,7 @@ const apiai = require('apiai');
 const express = require('express');
 const bodyParser = require('body-parser');
 require('dotenv').config();
-// const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN; // this is not working properly
+const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN; // this is not working properly
 const Telegram = require('telegram-node-bot'),
 
 
@@ -16,7 +16,7 @@ storage = new PersistentMemoryStorage(
     `${__dirname}/data/chatStorage.json`
 ),
 
-tg = new Telegram.Telegram(process.env.TELEGRAM_TOKEN, {
+tg = new Telegram.Telegram(TELEGRAM_TOKEN, {
     workers: 1,
     storage: storage
 });
