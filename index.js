@@ -15,7 +15,7 @@ storage = new PersistentMemoryStorage(
     `${__dirname}/data/chatStorage.json`
 ),
 
-tg = new Telegram.Telegram(process.env.TGAPIKEY, {
+tg = new Telegram.Telegram(process.env.TELEGRAM_TOKEN, {
     workers: 1,
     storage: storage
 });
