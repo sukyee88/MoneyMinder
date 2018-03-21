@@ -6,7 +6,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv').load();
 const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN;
-const Telegram = require('telegram-node-bot');
 const TelegramBot = require('./src/telegrambot');
 const TelegramBotConfig = require('./src/telegrambotconfig');
 
@@ -48,6 +47,13 @@ bot.start(() => {
 
 const app = express();
 app.use(bodyParser.json());
+
+app.get('/', function (req, res) {
+  res.send('Use the /webhook endpoint.')
+})
+app.get('/webhook', function (req, res) {
+  res.send('You must POST your request')
+})
 
 app.post('/webhook', (req, res) => {
     console.log('POST webhook');
