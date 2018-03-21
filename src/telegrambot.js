@@ -1,7 +1,7 @@
 'use strict';
 
 const apiai = require('apiai');
-const uuid = require('node-uuid');
+const uuid = require('uuid/v1');
 const request = require('request');
 
 module.exports = class TelegramBot {
