@@ -96,15 +96,12 @@ module.exports = class TelegramBot {
             let messageText = msg.text;
 
             console.log(chatId, messageText);
-            console.log("stuck here forever"); //stuck here
 
             if (chatId && messageText) {
                 if (!this._sessionIds.has(chatId)) {
                     this._sessionIds.set(chatId, uuid());
-                    console.log("Setting sessionID",this_sessionIds); //debug
                 }
 
-                console.log("in if")
 
                 let apiaiRequest = this._apiaiService.textRequest(messageText,
                     {

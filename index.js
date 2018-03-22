@@ -60,7 +60,7 @@ app.post('/webhook', (req, res) => {
 
     try {
         bot.processMessage(req, res);
-         console.log('* Received reply', req)
+         console.log('* Received reply')
     } catch (err) {
         return res.status(400).send('Error while processing ' + err.message);
     }
