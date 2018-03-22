@@ -158,6 +158,7 @@ module.exports = class TelegramBot {
     }
 
     reply(msg) {
+        console.log(msg)
         // https://core.telegram.org/bots/api#sendmessage
         request.post(this._telegramApiUrl + '/sendMessage', {
             json: msg
