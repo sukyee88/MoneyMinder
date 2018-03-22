@@ -118,6 +118,7 @@ module.exports = class TelegramBot {
                     });
 
                 apiaiRequest.on('response', (response) => {
+                    console.log(JSON.stringify(response, null, '  '));
                     if (TelegramBot.isDefined(response.result)) {
                         let responseText = response.result.fulfillment.speech;
                         let responseData = response.result.fulfillment.data;
@@ -128,10 +129,10 @@ module.exports = class TelegramBot {
 
                             let telegramMessage = responseData.telegram;
                             telegramMessage.chat_id = chatId;
-                            console.log(JSON.stringify(response, null, '  '));
+
 
                             this.reply(telegramMessage);
-                            
+
                             TelegramBot.createResponse(res, 200, 'Message processed');
 
                         } else if (TelegramBot.isDefined(responseText)) {
