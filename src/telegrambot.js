@@ -100,7 +100,7 @@ module.exports = class TelegramBot {
 
             if (chatId && messageText) {
                 if (!this._sessionIds.has(chatId)) {
-                    this._sessionIds.set(chatId, uuid();
+                    this._sessionIds.set(chatId, uuid());
                     console.log("Setting sessionID",this_sessionIds); //debug
                 }
 
