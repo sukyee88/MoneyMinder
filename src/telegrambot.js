@@ -77,6 +77,7 @@ module.exports = class TelegramBot {
         });
     }
 
+    // Use Dialogflow to process message
     processMessage(req, res) {
         if (this._botConfig.devConfig) {
             console.log("body", req.body);
@@ -105,7 +106,15 @@ module.exports = class TelegramBot {
 
                 let apiaiRequest = this._apiaiService.textRequest(messageText,
                     {
-                        sessionId: this._sessionIds.get(chatId)
+                        sessionId: this._sessionIds.get(chatId),
+                        contexts: [
+                         {
+                        name: 'context_number_one',
+                        parameters: {
+                            'some_parameter_of_context': 'parameter value 1'
+                             }
+                            }
+                        ]
                     });
 
                 apiaiRequest.on('response', (response) => {
@@ -119,8 +128,10 @@ module.exports = class TelegramBot {
 
                             let telegramMessage = responseData.telegram;
                             telegramMessage.chat_id = chatId;
+                            console.log(JSON.stringify(response, null, '  '));
 
                             this.reply(telegramMessage);
+                            
                             TelegramBot.createResponse(res, 200, 'Message processed');
 
                         } else if (TelegramBot.isDefined(responseText)) {
@@ -157,8 +168,8 @@ module.exports = class TelegramBot {
         }
     }
 
+    // Reply message via Telegram API
     reply(msg) {
-        console.log(msg)
         // https://core.telegram.org/bots/api#sendmessage
         request.post(this._telegramApiUrl + '/sendMessage', {
             json: msg
