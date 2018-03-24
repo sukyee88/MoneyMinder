@@ -118,9 +118,9 @@ module.exports = class TelegramBot {
                     //after action calls the 
 
 
-                    console.log('Intent is ', response.result.metadata.intentName);
-                    console.log('category: ',response.result.contexts.parameters.category);
-                    console.log('amount: ',response.result.contexts.parameters.amount.amount);
+                    console.log('Intent is', response.result.metadata.intentName);
+                    console.log('category:',response.result.contexts.parameters);
+                    console.log('amount:',response.result.contexts.parameters.amount.amount);
                     console.log('-------------------');
                     //console.log(JSON.stringify(response, null, '  '));
 
