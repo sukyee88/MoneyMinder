@@ -119,7 +119,7 @@ module.exports = class TelegramBot {
 
 
                     console.log('Intent is', response.result.metadata.intentName);
-                    console.log('category:',response.result.contexts.category);
+                    console.log('category:',response.result.contexts.parameters.category);
                     console.log('amount:',response.result.contexts.parameters.amount.amount);
                     console.log('-------------------');
                     //console.log(JSON.stringify(response, null, '  '));
