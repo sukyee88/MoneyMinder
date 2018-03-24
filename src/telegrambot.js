@@ -116,19 +116,15 @@ module.exports = class TelegramBot {
                     //call a function to perform different actions using response.intent
                     //intent options {spend.add, spend.edit, spend.get}
                     //after action calls the function to write into database
-
+                    //create new variable to carry context.category,context.amount,chatID,sessionID
+                    //configure mlab for nosql db
+                    
 
                     console.log('Intent is', response.result.metadata.intentName);
-                    console.log('response.result.contexts:',response.result.contexts);
-
-                    // why is this undefined?
-                    console.log('name:',response.result.contexts[0].name); 
-
-                    // Somehow can't access to category and amount?!!1
                     console.log('category:',response.result.contexts[0].parameters.category);
                     console.log('amount:',response.result.contexts[0].parameters.amount.amount);
                     console.log('-------------------');
-                    // console.log(JSON.stringify(response, null, '  '));
+                    //console.log(JSON.stringify(response, null, '  '));
 
 
                     // Create bot to Telegram using response
