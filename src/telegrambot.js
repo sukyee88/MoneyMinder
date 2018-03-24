@@ -115,13 +115,17 @@ module.exports = class TelegramBot {
                 apiaiRequest.on('response', (response) => {
                     //call a function to perform different actions using response.intent
                     //intent options {spend.add, spend.edit, spend.get}
-                    //after action calls the 
+                    //after action calls the function to write into database
 
 
                     console.log('Intent is', response.result.metadata.intentName);
                     console.log('response.result.contexts:',response.result.contexts);
-                    console.log('name:',response.result.contexts.name);
-                    console.log('category:',response.result.contexts.parameters.category);
+
+                    // why is this undefined?
+                    console.log('name:',response.result.contexts.name); 
+
+                    // Somehow can't access to category and amount?!!1
+                    // console.log('category:',response.result.contexts.parameters.category);
                     // console.log('amount:',response.result.parameters.amount.amount);
                     console.log('-------------------');
                     // console.log(JSON.stringify(response, null, '  '));
