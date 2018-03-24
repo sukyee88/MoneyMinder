@@ -111,7 +111,7 @@ module.exports = class TelegramBot {
                     });
 
                 // Receive response from APIAI and create telegram reply 
-                // WORKING ON THIS NOW
+                // ********* WORKING ON THIS NOW **********
                 apiaiRequest.on('response', (response) => {
                     //call a function to perform different actions using response.intent
                     //intent options {spend.add, spend.edit, spend.get}
@@ -119,7 +119,7 @@ module.exports = class TelegramBot {
 
 
                     console.log('Intent is', response.result.metadata.intentName);
-                    console.log('category:',response.contexts.parameters);
+                    console.log('category:',response.contexts.category);
                     console.log('amount:',response.contexts.parameters.amount.amount);
                     console.log('-------------------');
                     //console.log(JSON.stringify(response, null, '  '));
