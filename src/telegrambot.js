@@ -119,10 +119,12 @@ module.exports = class TelegramBot {
 
 
                     console.log('Intent is', response.result.metadata.intentName);
+                    console.log('name:',response.result.contexts);
+                    console.log('name:',response.result.contexts.name);
                     console.log('category:',response.result.contexts.category);
                     // console.log('amount:',response.result.parameters.amount.amount);
                     console.log('-------------------');
-                    console.log(JSON.stringify(response, null, '  '));
+                    // console.log(JSON.stringify(response, null, '  '));
 
 
                     // Create bot to Telegram using response
