@@ -120,7 +120,9 @@ module.exports = class TelegramBot {
                 // Receive response from APIAI and create telegram reply 
                 // WORKING ON THIS NOW
                 apiaiRequest.on('response', (response) => {
-                    console.log(JSON.stringify(response.contexts, null, '  '));
+                    console.log(response.contexts);
+                    console.log('-------------------');
+                    console.log(JSON.stringify(response, null, '  '));
                     if (TelegramBot.isDefined(response.result)) {
                         let responseText = response.result.fulfillment.speech;
                         let responseData = response.result.fulfillment.data;
