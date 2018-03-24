@@ -105,20 +105,22 @@ module.exports = class TelegramBot {
 
 
                 let apiaiRequest = this._apiaiService.textRequest(messageText,
+                    // {sessionID,contexts});
                     {
                         sessionId: this._sessionIds.get(chatId),
                         contexts: [
                          {
-                        name: 'context_number_one',
-                        parameters: {
-                            'some_parameter_of_context': 'parameter value 1'
-                             }
+                            name: 'context_number_one',
+                            parameters: {
+                                'some_parameter_of_context': 'parameter value 1'
                             }
-                        ]
+                        }]
                     });
 
+                // Receive response from APIAI and create telegram reply 
+                // WORKING ON THIS NOW
                 apiaiRequest.on('response', (response) => {
-                    console.log(JSON.stringify(response, null, '  '));
+                    console.log(JSON.stringify(response.contexts, null, '  '));
                     if (TelegramBot.isDefined(response.result)) {
                         let responseText = response.result.fulfillment.speech;
                         let responseData = response.result.fulfillment.data;
