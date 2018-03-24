@@ -122,11 +122,11 @@ module.exports = class TelegramBot {
                     console.log('response.result.contexts:',response.result.contexts);
 
                     // why is this undefined?
-                    console.log('name:',response.result.contexts.name); 
+                    console.log('name:',response.result.contexts[0].name); 
 
                     // Somehow can't access to category and amount?!!1
-                    // console.log('category:',response.result.contexts.parameters.category);
-                    // console.log('amount:',response.result.parameters.amount.amount);
+                    console.log('category:',response.result.contexts[0].parameters.category);
+                    console.log('amount:',response.result.contexts[0].parameters.amount.amount);
                     console.log('-------------------');
                     // console.log(JSON.stringify(response, null, '  '));
 
