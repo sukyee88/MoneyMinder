@@ -136,7 +136,7 @@ module.exports = class TelegramBot {
                         });
 
                         spendlog.save(function(err){
-                            if (err) return handleError(err);
+                            if (err) return console.log(err);
                             console.log('Entry added');
                         });
 
