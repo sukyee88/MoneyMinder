@@ -3,6 +3,7 @@
 const apiai = require('apiai');
 const uuid = require('uuid/v1');
 const request = require('request');
+const spendInfo = require('spendInfo');
 
 
 module.exports = class TelegramBot {
