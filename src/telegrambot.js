@@ -121,8 +121,7 @@ module.exports = class TelegramBot {
                     //create new variable to carry context.category,context.amount,chatID,sessionID
                     //configure mlab for nosql db
                     let responseIntent = response.result.metadata.intentName;
-
-                    if (responseIntent = 'spend.Add' && response.result.contexts[0].parameters.category)
+                    if (responseIntent = 'spend.Add' && response.result.contexts[0].parameters)
                     {
                         let category = response.result.contexts[0].parameters.category;
                         let amount = response.result.contexts[0].parameters.amount.amount;
