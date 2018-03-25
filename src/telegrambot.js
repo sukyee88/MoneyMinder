@@ -91,7 +91,6 @@ module.exports = class TelegramBot {
             let msg = updateObject.message;
 
             var chatId;
-            var responseIntent;
 
             if (msg.chat) {
                 chatId = msg.chat.id;
@@ -120,7 +119,7 @@ module.exports = class TelegramBot {
                     //after action calls the function to write into database
                     //create new variable to carry context.category,context.amount,chatID,sessionID
                     //configure mlab for nosql db
-                    responseIntent = response.result.metadata.intentName;
+                    let responseIntent = response.result.metadata.intentName;
                     console.log('Intent 1 is', response.result.metadata.intentName);
 
                     if (responseIntent = 'spend.Add' && response.result.contexts[0])
@@ -137,7 +136,7 @@ module.exports = class TelegramBot {
                         });
 
                         spendlog.save(function(err){
-                            if (err) return console.log(err);
+                            if (err) return console.log('spendlog: ERROR',err);
                             console.log('Entry added');
                         });
 
