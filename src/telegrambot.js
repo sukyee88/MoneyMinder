@@ -105,7 +105,8 @@ module.exports = class TelegramBot {
                     this._sessionIds.set(chatId, uuid());
                 }
 
-
+                var responseIntent;
+                
                 let apiaiRequest = this._apiaiService.textRequest(messageText,
                     {
                         sessionId: this._sessionIds.get(chatId),
@@ -120,7 +121,7 @@ module.exports = class TelegramBot {
                     //after action calls the function to write into database
                     //create new variable to carry context.category,context.amount,chatID,sessionID
                     //configure mlab for nosql db
-                    var responseIntent = response.result.metadata.intentName;
+                    responseIntent = response.result.metadata.intentName;
                     if (responseIntent = 'spend.Add' && response.result.contexts[0])
                     {
                         var category = response.result.contexts[0].parameters.category;
