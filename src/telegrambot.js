@@ -122,7 +122,7 @@ module.exports = class TelegramBot {
                     let responseIntent = response.result.metadata.intentName;
                     console.log('Intent 1 is', response.result.metadata.intentName);
 
-                    if (responseIntent == "spend.Add" && response.result.contexts[0])
+                    if (responseIntent == "spend.add")
                     {
                         var category = response.result.contexts[0].parameters.category;
                         var amount = response.result.contexts[0].parameters.amount.amount;
