@@ -4,6 +4,7 @@ const apiai = require('apiai');
 const uuid = require('uuid/v1');
 const request = require('request');
 
+
 module.exports = class TelegramBot {
 
     get apiaiService() {
@@ -118,12 +119,20 @@ module.exports = class TelegramBot {
                     //after action calls the function to write into database
                     //create new variable to carry context.category,context.amount,chatID,sessionID
                     //configure mlab for nosql db
-                    
+                    let responseIntent = response.result.metadata.intentName;
 
-                    console.log('Intent is', response.result.metadata.intentName);
-                    console.log('category:',response.result.contexts[0].parameters.category);
-                    console.log('amount:',response.result.contexts[0].parameters.amount.amount);
-                    console.log('-------------------');
+                    if (responseIntent = 'spend.Add')
+                    {
+                        let category = response.result.contexts[0].parameters.category;
+                        let amount = response.result.contexts[0].parameters.amount.amount;
+                        console.log('Intent is', responseIntent);
+                        console.log('category:',response.result.contexts[0].parameters.category);
+                        console.log('amount:',response.result.contexts[0].parameters.amount.amount);
+                        console.log('chatID',chatId);
+                        console.log('-------------------');
+                    }
+
+                    
                     //console.log(JSON.stringify(response, null, '  '));
 
 

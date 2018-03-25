@@ -3,11 +3,14 @@
 
 const apiai = require('apiai');
 const express = require('express');
+const server = express();
+const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv').load();
 const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN;
 const TelegramBot = require('./src/telegrambot');
 const TelegramBotConfig = require('./src/telegrambotconfig');
+const spendInfo = require('./src/spendInfo');
 
 const REST_PORT = (process.env.PORT || 5000);
 const DEV_CONFIG = process.env.DEVELOPMENT_CONFIG == 'true';
@@ -17,6 +20,9 @@ const APIAI_ACCESS_TOKEN = process.env.APIAI_ACCESS_TOKEN;
 const APIAI_LANG = process.env.APIAI_LANG;
 // const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN;
 
+const DBUSER = process.env.DBUSER;
+const DBPASSWORD = process.env.DBPASSWORD;
+
 var baseUrl = "";
 if (APP_NAME) {
     // Heroku case
@@ -25,6 +31,23 @@ if (APP_NAME) {
     console.error('Set up the url of your service here and remove exit code!');
     process.exit(1);
 }
+
+// mongoose instance connection
+mongoose.Promise = global.Promise;
+var dbUrl = "mongodb://"+DBUSER+DBPASSWORD+"@ds223509.mlab.com:23509/moneyminder_test";
+mongoose.connect(dbUrl);
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+	console.log("We're connected to mLab")
+});
+
+server.use(bodyParser.urlencoded({extended:true}));
+server.use(bodyParser.json());
+server.listen((process.env.PORT || 8000),function(){
+	console.log("Server is up and listening on port" + process.env.PORT);
+});
 
 // console timestamps
 require('console-stamp')(console, 'yyyy.mm.dd HH:MM:ss.l');

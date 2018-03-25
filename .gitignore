@@ -61,4 +61,4 @@ typings/
 .next
 
 # user defined
-src/
+client_secret.json
