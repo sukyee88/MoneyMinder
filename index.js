@@ -35,9 +35,8 @@ if (APP_NAME) {
 // mongoose instance connection
 mongoose.Promise = global.Promise;
 var dbUrl = "mongodb://"+DBUSER+':'+DBPASSWORD+"@ds223509.mlab.com:23509/moneyminder_test";
-mongoose.connect(dbUrl, {
-    useMongoClient: true
- });
+mongoose.connect(dbUrl);
+console.log(dbUrl);
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
