@@ -125,6 +125,9 @@ module.exports = class TelegramBot {
                     {
                         let category = response.result.contexts[0].parameters.category;
                         let amount = response.result.contexts[0].parameters.amount.amount;
+
+
+                        
                         console.log('Intent is', responseIntent);
                         console.log('category:',response.result.contexts[0].parameters.category);
                         console.log('amount:',response.result.contexts[0].parameters.amount.amount);

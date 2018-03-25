@@ -45,9 +45,9 @@ db.once('open', function() {
 
 server.use(bodyParser.urlencoded({extended:true}));
 server.use(bodyParser.json());
-server.listen((process.env.PORT || 8000),function(){
-	console.log("Server is up and listening on port" + process.env.PORT);
-});
+// server.listen((process.env.PORT || 8000),function(){
+// 	console.log("Server is up and listening on port" + process.env.PORT);
+// });
 
 // console timestamps
 require('console-stamp')(console, 'yyyy.mm.dd HH:MM:ss.l');
