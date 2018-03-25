@@ -132,7 +132,6 @@ module.exports = class TelegramBot {
                             userID: chatId,
                             category: category,
                             amount: amount
-
                         });
 
                         spendlog.save(function(err){
@@ -148,7 +147,7 @@ module.exports = class TelegramBot {
                     }
 
                     
-                    //console.log(JSON.stringify(response, null, '  '));
+                    console.log(JSON.stringify(response, null, '  '));
 
 
                     // Create bot to Telegram using response
