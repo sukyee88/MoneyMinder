@@ -140,7 +140,7 @@ module.exports = class TelegramBot {
                             console.log('Entry added');
                         });
 
-                        console.log('Intent is', responseIntent);
+                        console.log('Intent is', response.result.metadata.intentName);
                         console.log('category:',response.result.contexts[0].parameters.category);
                         console.log('amount:',response.result.contexts[0].parameters.amount.amount);
                         console.log('chatID',chatId);
