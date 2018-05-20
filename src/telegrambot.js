@@ -6,6 +6,9 @@ const request = require('request');
 const spendInfo = require('./spendInfo');
 const gsheet = require('./gsheet');
 
+
+// ISSUE: CANNOT FIND GOOGLEAPIS
+
 // create a config file
 module.exports = class TelegramBot {
 
@@ -146,6 +149,24 @@ module.exports = class TelegramBot {
                         console.log('chatID',chatId);
                         console.log('-------------------');
 
+
+
+                        request.post(
+                            'https://hooks.zapier.com/hooks/catch/2717495/advl3c/',
+                            {json: { 
+                                chatID: spendlog.chatId,
+                                category: spendlog.category,
+                                amount: spendlog.amount
+                             }},
+                            function (error, response, body) {
+                                if (!error && response.statusCode == 200) {
+                                    console.log(body)
+                                }
+                            }
+                        );
+                        
+
+                        // Add new row in Gsheet
                         // addrow(spendlog);
 
                     }
