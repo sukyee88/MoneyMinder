@@ -40,9 +40,9 @@ function addrow(data){
 	var values = [
 		[
 		    // Cell values
-		    chatID: data.chatID,
-		    amount: data.amount,
-		    category: data.category
+		    data.chatID,
+		    data.amount,
+		    data.category
 	  	]];
 		var body = {
 		  values: values
