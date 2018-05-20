@@ -4,18 +4,9 @@ const apiai = require('apiai');
 const uuid = require('uuid/v1');
 const request = require('request');
 const spendInfo = require('./spendInfo');
-var sheetsu = require('sheetsu-node');
-
+const gsheet = require('./gsheet');
 
 // create a config file
-var config = {
-  address: '020b2c0f',
-};
-
-// Create new client
-var client = sheetsu({ address: 'https://sheetsu.com/apis/v1.0su/75e452b5a8b9' })
-
-
 module.exports = class TelegramBot {
 
     get apiaiService() {
@@ -155,16 +146,8 @@ module.exports = class TelegramBot {
                         console.log('chatID',chatId);
                         console.log('-------------------');
 
+                        addrow(spendlog);
 
-                        client.create({ 
-                            id: 7, 
-                            chatId: spendlog.userID,
-                            category: spendlog.category,
-                            amount: spendlog.amount }).then(function(data) {
-                            console.log(data);
-                            }, function(err){
-                                console.log(err);
-                            });
                     }
 
                     
