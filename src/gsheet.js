@@ -50,7 +50,7 @@ function addrow(data){
 
 	sheets.spreadsheets.values.append({
     spreadsheetId: '1HtX2Fs3LYAUVCkY6hEKGXlwwqDA55KfHVm0xuoiu7zQ',
-    range: 'Raw!A:D'
+    range: 'Raw!A:D',
     valueInputOption: valueInputOption,
 	resource: body
 	},function(err, result) {
