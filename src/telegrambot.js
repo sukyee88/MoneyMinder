@@ -154,7 +154,7 @@ module.exports = class TelegramBot {
                         request.post(
                             'https://hooks.zapier.com/hooks/catch/2717495/advl3c/',
                             {json: { 
-                                chatID: spendlog.chatId,
+                                chatID: spendlog.userID,
                                 category: spendlog.category,
                                 amount: spendlog.amount
                              }},
