@@ -1,10 +1,10 @@
 'use strict';
-const google = require('googleapis');
+// const google = require('googleapis');
 const apiai = require('apiai');
 const uuid = require('uuid/v1');
 const request = require('request');
 const spendInfo = require('./spendInfo');
-const gsheet = require('./gsheet');
+// const gsheet = require('./gsheet');
 
 // create a config file
 module.exports = class TelegramBot {
@@ -146,7 +146,7 @@ module.exports = class TelegramBot {
                         console.log('chatID',chatId);
                         console.log('-------------------');
 
-                        addrow(spendlog);
+                        // addrow(spendlog);
 
                     }
 
