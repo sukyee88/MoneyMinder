@@ -4,7 +4,7 @@ const apiai = require('apiai');
 const uuid = require('uuid/v1');
 const request = require('request');
 const spendInfo = require('./spendInfo');
-// const gsheet = require('./gsheet');
+const gsheet = require('./gsheet');
 
 
 // ISSUE: CANNOT FIND GOOGLEAPIS
@@ -167,7 +167,7 @@ module.exports = class TelegramBot {
                         
 
                         // Add new row in Gsheet
-                        // addrow(spendlog);
+                        addrow(spendlog);
 
                     }
 
