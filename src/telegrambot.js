@@ -1,5 +1,5 @@
 'use strict';
-// const google = require('googleapis');
+const google = require('googleapis');
 const apiai = require('apiai');
 const uuid = require('uuid/v1');
 const request = require('request');
