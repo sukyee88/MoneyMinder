@@ -154,7 +154,7 @@ module.exports = class TelegramBot {
                         request.put(
                             'https://api.mlab.com/api/1/databases/moneyminder_test/collections/test_env?apiKey=mlabkey',
                             {json: { 
-                                date: Date.now(),
+                                // date: Date.now(),
                                 chatID: spendlog.userID,
                                 category: spendlog.category,
                                 amount: spendlog.amount
@@ -164,6 +164,7 @@ module.exports = class TelegramBot {
                                     console.log(body)
                                 }
                             }
+                            console.log("mlab API")
                         );
                         // Using Zapier and Gsheet
 
