@@ -151,7 +151,7 @@ module.exports = class TelegramBot {
 
 
 
-                        request.post(
+                        request.put(
                             'https://api.mlab.com/api/1/databases/moneyminder_test/collections/test_env?apiKey=mlabkey',
                             {json: { 
                                 date: Date.now(),
