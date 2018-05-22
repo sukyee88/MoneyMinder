@@ -23,6 +23,7 @@ const APIAI_LANG = process.env.APIAI_LANG;
 
 const DBUSER = process.env.DBUSER;
 const DBPASSWORD = encodeURIComponent(process.env.DBPASSWORD);
+const mlabkey = process.env.MLAB_TOKEN
 
 var baseUrl = "";
 if (APP_NAME) {

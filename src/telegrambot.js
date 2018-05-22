@@ -150,9 +150,11 @@ module.exports = class TelegramBot {
 
 
 
+
                         request.post(
-                            'https://hooks.zapier.com/hooks/catch/2717495/advl3c/',
+                            'https://api.mlab.com/api/1/databases/moneyminder_test/collections/test_env?apiKey=mlabkey',
                             {json: { 
+                                date: $date,
                                 chatID: spendlog.userID,
                                 category: spendlog.category,
                                 amount: spendlog.amount
@@ -163,9 +165,24 @@ module.exports = class TelegramBot {
                                 }
                             }
                         );
+                        // Using Zapier and Gsheet
+
+                        // request.post(
+                        //     'https://hooks.zapier.com/hooks/catch/2717495/advl3c/',
+                        //     {json: { 
+                        //         chatID: spendlog.userID,
+                        //         category: spendlog.category,
+                        //         amount: spendlog.amount
+                        //      }},
+                        //     function (error, response, body) {
+                        //         if (!error && response.statusCode == 200) {
+                        //             console.log(body)
+                        //         }
+                        //     }
+                        // );
                         
 
-                        // Add new row in Gsheet
+                        // Add new row in Gsheet using GoogleAPI
                         // addrow(spendlog);
 
                     }
