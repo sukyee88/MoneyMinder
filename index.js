@@ -23,7 +23,7 @@ const APIAI_LANG = process.env.APIAI_LANG;
 
 const DBUSER = process.env.DBUSER;
 const DBPASSWORD = encodeURIComponent(process.env.DBPASSWORD);
-const mlabkey = process.env.MLAB_TOKEN
+
 
 var baseUrl = "";
 if (APP_NAME) {
@@ -36,8 +36,8 @@ if (APP_NAME) {
 
 // mongoose instance connection
 mongoose.Promise = global.Promise;
-var dbUrl = "mongodb://"+DBUSER+':'+DBPASSWORD+"@ds223509.mlab.com:23509/moneyminder_test";
-mongoose.connect(dbUrl);
+var dbUri = "mongodb://"+DBUSER+':'+DBPASSWORD+"@ds223509.mlab.com:23509/moneyminder_test";
+mongoose.connect(dbUri);
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
