@@ -22,7 +22,7 @@ const APIAI_LANG = process.env.APIAI_LANG;
 // const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN;
 
 const DBUSER = process.env.DBUSER;
-const DBPASSWORD = encodeURIComponed(process.env.DBPASSWORD);
+const DBPASSWORD = encodeURIComponent(process.env.DBPASSWORD);
 
 var baseUrl = "";
 if (APP_NAME) {
