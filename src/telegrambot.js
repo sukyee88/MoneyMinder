@@ -151,7 +151,7 @@ module.exports = class TelegramBot {
 
 
 
-                        request.put(
+                        request.post(
                             'https://api.mlab.com/api/1/databases/moneyminder_test/collections/test_env?apiKey=mlabkey',
                             {json: { 
                                 // date: Date.now(),
@@ -164,7 +164,6 @@ module.exports = class TelegramBot {
                                     console.log(body)
                                 }
                             }
-                            console.log("mlab API")
                         );
                         // Using Zapier and Gsheet
 
