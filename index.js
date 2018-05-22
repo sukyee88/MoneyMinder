@@ -35,15 +35,15 @@ if (APP_NAME) {
 }
 
 // mongoose instance connection
-mongoose.Promise = global.Promise;
-var dbUri = "mongodb://"+DBUSER+':'+DBPASSWORD+"@ds223509.mlab.com:23509/moneyminder_test";
-mongoose.connect(dbUri);
+// mongoose.Promise = global.Promise;
+// var dbUri = "mongodb://"+DBUSER+':'+DBPASSWORD+"@ds223509.mlab.com:23509/moneyminder_test";
+// mongoose.connect(dbUri);
 
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-db.once('open', function() {
-	console.log("We're connected to mLab")
-});
+// var db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+// db.once('open', function() {
+// 	console.log("We're connected to mLab")
+// });
 
 server.use(bodyParser.urlencoded({extended:true}));
 server.use(bodyParser.json());

@@ -149,13 +149,10 @@ module.exports = class TelegramBot {
                         console.log('chatID',chatId);
                         console.log('-------------------');
 
-
-
-
                         request.post(
                             'https://api.mlab.com/api/1/databases/moneyminder_test/collections/test_env?apiKey='+mlabkey,
                             {json: { 
-                                // date: Date.now(),
+                                date: Date.now(),
                                 chatID: spendlog.userID,
                                 category: spendlog.category,
                                 amount: spendlog.amount
@@ -187,10 +184,6 @@ module.exports = class TelegramBot {
                         // addrow(spendlog);
 
                     }
-
-                    
-                    // console.log(JSON.stringify(response, null, '  '));
-
 
                     // Create bot to Telegram using response
                     if (TelegramBot.isDefined(response.result)) {
