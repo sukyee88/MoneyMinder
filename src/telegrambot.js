@@ -5,6 +5,7 @@ const request = require('request');
 const spendInfo = require('./spendInfo');
 // const gsheet = require('./gsheet');
 
+const mlabkey = process.env.MLAB_TOKEN
 
 // ISSUE: CANNOT FIND GOOGLEAPIS
 
