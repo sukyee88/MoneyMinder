@@ -169,14 +169,11 @@ module.exports = class TelegramBot {
                     if (responseIntent == "spend.get"){
                         var body;
 
-                        request('https://api.mlab.com/api/1/databases/moneyminder_test/collections/test_env?apiKey='+mlabkey,
+                        request('https://api.mlab.com/api/1/databases/moneyminder_test/collections/test_env?q={"chatID": "'+spendlog.userID+'"}&apiKey='+mlabkey,
                             function(error, response, data) {
                             body = data;
                             console.log(body);
                         });
-
-
-
                     }
 
                     // Create bot to Telegram using response
