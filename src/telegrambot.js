@@ -5,6 +5,7 @@ const request = require('request');
 const spendInfo = require('./spendInfo');
 const data = require('./data');
 
+const mlabkey = process.env.MLAB_TOKEN;
 
 // create a config file
 module.exports = class TelegramBot {
@@ -166,8 +167,13 @@ module.exports = class TelegramBot {
                     }
 
                     if (responseIntent == "spend.get"){
+                        var body;
 
-                        console.log("HERE!!!")
+                        request('https://api.mlab.com/api/1/databases/moneyminder_test/collections/test_env?apiKey='+mlabkey,
+                            function(error, response, data) {
+                            body = data;
+                            console.log(body);
+                        });
 
 
 
