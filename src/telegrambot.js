@@ -169,7 +169,7 @@ module.exports = class TelegramBot {
                     if (responseIntent == "spend.get"){
                         var body;
 
-                        request('https://api.mlab.com/api/1/databases/moneyminder_test/collections/test_env?q={"chatID": "'+spendlog.userID+'"}&apiKey='+mlabkey,
+                        request('https://api.mlab.com/api/1/databases/moneyminder_test/collections/test_env?q={"chatID": "'+chatId+'"}&apiKey='+mlabkey,
                             function(error, response, data) {
                             body = data;
                             console.log(body);
