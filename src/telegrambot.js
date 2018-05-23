@@ -3,11 +3,8 @@ const apiai = require('apiai');
 const uuid = require('uuid/v1');
 const request = require('request');
 const spendInfo = require('./spendInfo');
-// const gsheet = require('./gsheet');
+const data = require('./data');
 
-const mlabkey = process.env.MLAB_TOKEN
-
-// ISSUE: CANNOT FIND GOOGLEAPIS
 
 // create a config file
 module.exports = class TelegramBot {
@@ -119,15 +116,14 @@ module.exports = class TelegramBot {
                 // ********* WORKING ON THIS NOW **********
                 apiaiRequest.on('response', (response) => {
                     //call a function to perform different actions using response.intent
-                    //intent options {spend.add, spend.edit, spend.get}
+                    //intent options {spend.add, spend.edit, spend.get} [WIP]
                     //after action calls the function to write into database
-                    //create new variable to carry context.category,context.amount,chatID,sessionID
-                    //configure mlab for nosql db
+                    //create new variable to carry context.category,context.amount,chatID,sessionID [DONE]
+                    //configure mlab for nosql db [DONE]
                     let responseIntent = response.result.metadata.intentName;
-                    console.log('Intent 1 is', response.result.metadata.intentName);
+                    // console.log('Intent 1 is', response.result.metadata.intentName);
 
-                    if (responseIntent == "spend.add")
-                    {
+                    if (responseIntent == "spend.add"){
                         var category = response.result.contexts[0].parameters.category;
                         var amount = response.result.contexts[0].parameters.amount.amount;
 
@@ -138,17 +134,20 @@ module.exports = class TelegramBot {
                             amount: amount
                         });
 
-                        spendlog.save(function(err){
-                            if (err) return console.log('spendlog: ERROR',err);
-                            console.log('Entry added');
-                        });
+                        // console.log('Intent 2 is', responseIntent);
+                        // console.log('category:',response.result.contexts[0].parameters.category);
+                        // console.log('amount:',response.result.contexts[0].parameters.amount.amount);
+                        // console.log('chatID',chatId);
+                        // console.log('-------------------');
 
-                        console.log('Intent 2 is', responseIntent);
-                        console.log('category:',response.result.contexts[0].parameters.category);
-                        console.log('amount:',response.result.contexts[0].parameters.amount.amount);
-                        console.log('chatID',chatId);
-                        console.log('-------------------');
+                        // add entry to mlab not using API
+                        // spendlog.save(function(err){
+                        //     if (err) return console.log('spendlog: ERROR',err);
+                        //     console.log('Entry added');
+                        // });
 
+                        // add entry to mlab using API
+                        // REWRITE THIS INTO ANOTHER FUNCTION in Data.js
                         request.post(
                             'https://api.mlab.com/api/1/databases/moneyminder_test/collections/test_env?apiKey='+mlabkey,
                             {json: { 
@@ -159,29 +158,18 @@ module.exports = class TelegramBot {
                              }},
                             function (error, response, body) {
                                 if (!error && response.statusCode == 200) {
-                                    console.log(body)
+                                    // console.log(body)
                                 }
                             }
                         );
-                        // Using Zapier and Gsheet
 
-                        // request.post(
-                        //     'https://hooks.zapier.com/hooks/catch/2717495/advl3c/',
-                        //     {json: { 
-                        //         chatID: spendlog.userID,
-                        //         category: spendlog.category,
-                        //         amount: spendlog.amount
-                        //      }},
-                        //     function (error, response, body) {
-                        //         if (!error && response.statusCode == 200) {
-                        //             console.log(body)
-                        //         }
-                        //     }
-                        // );
-                        
+                    }
 
-                        // Add new row in Gsheet using GoogleAPI
-                        // addrow(spendlog);
+                    if (responseIntent == "spend.get"){
+
+                        console.log("HERE!!!")
+
+
 
                     }
 
