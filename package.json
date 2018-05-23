@@ -3,6 +3,9 @@
   "version": "1.2.0",
   "description": "",
   "main": "index.js",
+  "engines":{
+    "node": "8.11.x"
+  },
   "dependencies": {
     "api.ai": "^1.0.3",
     "apiai": "^4.0.3",
