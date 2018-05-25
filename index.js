@@ -94,6 +94,10 @@ app.listen(REST_PORT, function () {
     console.log('Rest service ready on port ' + REST_PORT);
 });
 
+exports.helloHttp = function helloHttp (request, response) {
+  response.json({ fulfillmentText: 'This is a sample response from your webhook!' });
+};
+    
 
 // PersistentMemoryStorage = require('./adapters/PersistentMemoryStorage'),
 // storage = new PersistentMemoryStorage(
