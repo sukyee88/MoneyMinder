@@ -94,8 +94,11 @@ app.listen(REST_PORT, function () {
     console.log('Rest service ready on port ' + REST_PORT);
 });
 
+
+//Testing fulfilment
 exports.helloHttp = function helloHttp (request, response) {
   response.json({ fulfillmentText: 'This is a sample response from your webhook!' });
+  console.log('Working well');
 };
     
 
